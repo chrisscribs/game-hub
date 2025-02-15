@@ -11,8 +11,8 @@ import { LuChevronDown } from "react-icons/lu";
 
 interface Props {
   onSelectPlatform: (platform: Platform) => void;
-    selectedPlatform: Platform | null;
-  }
+  selectedPlatform: Platform | null;
+}
 
 const PlatformSelector = ({ onSelectPlatform, selectedPlatform }: Props) => {
   const { data, error } = usePlatforms();
@@ -23,13 +23,14 @@ const PlatformSelector = ({ onSelectPlatform, selectedPlatform }: Props) => {
     <MenuRoot>
       <MenuTrigger asChild>
         <Button variant="outline">
-          {selectedPlatform?.name || 'Platforms'}
+          {selectedPlatform?.name || "Platforms"}
           <LuChevronDown />{" "}
         </Button>
       </MenuTrigger>
       <MenuContent width={"100px"} position={"absolute"}>
         {data.map((platform) => (
           <MenuItem
+            cursor={"pointer"}
             onClick={() => onSelectPlatform(platform)}
             value={platform.slug}
             key={platform.id}
