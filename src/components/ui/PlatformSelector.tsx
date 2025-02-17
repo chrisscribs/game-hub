@@ -20,26 +20,28 @@ const PlatformSelector = ({ onSelectPlatform, selectedPlatform }: Props) => {
   if (error) return null;
 
   return (
-    <MenuRoot>
-      <MenuTrigger asChild>
-        <Button variant="outline">
-          {selectedPlatform?.name || "Platforms"}
-          <LuChevronDown />{" "}
-        </Button>
-      </MenuTrigger>
-      <MenuContent width={"100px"} position={"absolute"}>
-        {data.map((platform) => (
-          <MenuItem
-            cursor={"pointer"}
-            onClick={() => onSelectPlatform(platform)}
-            value={platform.slug}
-            key={platform.id}
-          >
-            {platform.name}
-          </MenuItem>
-        ))}
-      </MenuContent>
-    </MenuRoot>
+    <div className="PlatformSelector">
+      <MenuRoot>
+        <MenuTrigger asChild>
+          <Button variant="outline">
+            {selectedPlatform?.name || "Platforms"}
+            <LuChevronDown />{" "}
+          </Button>
+        </MenuTrigger>
+        <MenuContent width={"-moz-fit-content"} position={"absolute"}>
+          {data.map((platform) => (
+            <MenuItem
+              cursor={"pointer"}
+              onClick={() => onSelectPlatform(platform)}
+              value={platform.slug}
+              key={platform.id}
+            >
+              {platform.name}
+            </MenuItem>
+          ))}
+        </MenuContent>
+      </MenuRoot>
+    </div>
   );
 };
 
